@@ -16,11 +16,24 @@ io.sockets.on('connection', function (socket) {
 	console.log('new user');
 
 	socket.on('nickName', function (data) {
-		socket.name = data;
+		for (i = 0; i < users.length; i++) {
+			if (users[i] == data) {
+				socket.emit('userInUse', data);
+				return;
+			}
+		}
 		users.push(data);
+		console.log("BEFORE");
+		socket.emit('_connect');
+		console.log("AFTER");
+
+		io.sockets.emit('globalMsg', {
+			user: data,
+			msg: ' Is Connected !'
+		})
+
 		io.sockets.emit('online_users', users);
 		console.log(socket.name + ' Is Connected !');
-		console.log(users);
 	})
 
 	socket.on('newMsg', function (data) {
