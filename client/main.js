@@ -25,7 +25,7 @@ function _send(event) {
 
 socket.on('_connect', function () {
 	console.log("**********");
-	document.getElementById('container').innerHTML = '<input type="text" id="msg" onkeypress="newMsg(event)"><input type="button" id="send" value="send" onclick="newMsg()"><div id="publicChat"></div>';
+	document.getElementById('container').innerHTML = '<div id="publicChat"></div><input type="text" id="msg" onkeypress="newMsg(event)"><input type="button" id="send" value="send" onclick="newMsg()">';
 	publicChat = document.getElementById('publicChat');
 });
 
