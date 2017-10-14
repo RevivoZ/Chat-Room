@@ -7,7 +7,7 @@ app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/client/index.html');
 });
 app.use('/client', express.static(__dirname + '/client'));
-serv.listen(2000);
+serv.listen(80);
 
 console.log('server Started');
 
@@ -19,7 +19,7 @@ io.sockets.on('connection', function (socket) {
 		socket.name = data;
 		users.push(data);
 		io.sockets.emit('online_users', users);
-		console.log(socket.name + ' is IN');
+		console.log(socket.name + ' Is Connected !');
 		console.log(users);
 	})
 
@@ -32,4 +32,20 @@ io.sockets.on('connection', function (socket) {
 		console.log(' someOneSaid ' + data.value);
 		io.sockets.emit('someOneSaid', data.value);
 	})
+
+	socket.on('Disconnect', function (data) {
+		for (i = 0; i < users.length; i++) {
+			if (users[i] == data) {
+				io.sockets.emit('online_users', users);
+				io.sockets.emit('globalMsg', {
+					user: users[i],
+					msg: ' Is Disconnected !'
+				})
+				users.splice(i, 1);
+			}
+
+		}
+
+	})
+
 });
