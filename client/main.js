@@ -52,6 +52,7 @@ socket.on('globalMsg', function (data) {
 	var x = document.createElement('div');
 	x.innerHTML = '<h2>' + data.user + ' : ' + data.msg + '</h2>';
 	publicChat.appendChild(x);
+	publicChat.scrollTop = publicChat.scrollHeight - publicChat.clientHeight;
 });
 
 function newMsg(event) {
