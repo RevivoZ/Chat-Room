@@ -36,7 +36,7 @@ socket.on('userInUse', function (data) {
 socket.on('online_users', function (data) {
 	onlineUsers.innerHTML = '';
 	for (var i = 0; i < data.length; i++) {
-		onlineUsers.innerHTML += '<p>' + data[i] + '</p>';
+		onlineUsers.innerHTML += '<p>' + data[i] + '</p>' + '<hr>';
 	}
 });
 
@@ -47,7 +47,7 @@ socket.on('someOneSaid', function (data) {
 
 socket.on('globalMsg', function (data) {
 	var x = document.createElement('li');
-	x.innerHTML = data.user + ': ' + data.msg;
+	x.innerHTML = '<b>' + data.user + '</b>' + ': ' + data.msg;
 	publicChat.appendChild(x);
 	publicChat.scrollTop = publicChat.scrollHeight - publicChat.clientHeight;
 });
