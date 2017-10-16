@@ -24,8 +24,7 @@ function _send(event) {
 }
 
 socket.on('_connect', function () {
-	console.log("**********");
-	document.getElementById('container').innerHTML = '<div id="publicChat"></div><input type="text" id="msg" onkeypress="newMsg(event)"><input type="button" id="send" value="send" onclick="newMsg()">';
+	document.getElementById('container').innerHTML = '<div id="publicChat"></div><div class="controler"><input type="text" id="msg" onkeypress="newMsg(event)"><button type="button" id="send" onclick="newMsg()">Send</button></div>';
 	publicChat = document.getElementById('publicChat');
 });
 
@@ -35,7 +34,6 @@ socket.on('userInUse', function (data) {
 
 
 socket.on('online_users', function (data) {
-	console.log(data);
 	onlineUsers.innerHTML = '';
 	for (var i = 0; i < data.length; i++) {
 		onlineUsers.innerHTML += '<p>' + data[i] + '</p>';
@@ -43,14 +41,13 @@ socket.on('online_users', function (data) {
 });
 
 socket.on('someOneSaid', function (data) {
-	console.log('fds');
 	var _public = document.getElementById('publicChat');
 	_public.innerHTML += 'some One Said :  ' + data + "</br>";
 });
 
 socket.on('globalMsg', function (data) {
-	var x = document.createElement('div');
-	x.innerHTML = '<h2>' + data.user + ' : ' + data.msg + '</h2>';
+	var x = document.createElement('li');
+	x.innerHTML = data.user + ': ' + data.msg;
 	publicChat.appendChild(x);
 	publicChat.scrollTop = publicChat.scrollHeight - publicChat.clientHeight;
 });

@@ -1,15 +1,77 @@
-#container{
-  position: relative;
-  width: 80%;
-  height: 100%;
-
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-#publicChat{
-  width:100%;
-  background-color:#eee;
-  overflow:hidden;
-  height:80%;
-  max-height:100%;
-  border:1px solid #ccc;
-  overflow-y: auto;
+
+body {
+	font: 13px Helvetica, Arial;
+}
+
+.online {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	width: 20%;
+	background-color: azure;
+	height: 88%;
+	border: 1px solid #ccc;
+}
+
+p {
+	width: 100%;
+}
+
+.controler {
+	background: #000;
+	padding: 3px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+#container {
+	position: relative;
+	width: 80%;
+	height: 100%;
+}
+
+input {
+	border: 0;
+	padding: 10px;
+	width: 80%;
+	margin-right: .5%;
+}
+
+button {
+	width: 18%;
+	background: rgb(130, 224, 255);
+	border: none;
+	padding: 10px;
+}
+
+#publicChat {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: white;
+	overflow: hidden;
+	height: 80%;
+	max-height: 100%;
+	border: 1px solid #ccc;
+	overflow-y: auto;
+}
+
+#publicChat li {
+	padding: 5px 10px;
+}
+
+#publicChat li:nth-child(odd) {
+	background: #eee;
+}
+
+h2 {
+	text-align: center;
 }

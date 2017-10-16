@@ -1,23 +1,26 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="client/style.css">
+	<link rel="stylesheet" href="client/style.css">
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="client/main.js" defer></script>
 </head>
 
 <body>
-	<div id="container" style="position:absolute;left:0">
-		<input type="text" id="nickName" placeholder="Nick NAME" onkeypress="_send(event)">
-		<button type="button" onclick="_send()">LogIn</button>
-		<div id="system"></div>
-	</div>
 	<div class="online" style="position:absolute;right:0">
-		<h2>onlineUsers</h2>
+		<h2>Online</h2>
 		<div id="onlineUsers">
 		</div>
 	</div>
+	<div id="container" style="position:absolute;left:0">
+		<div class="controler">
+			<input type="text" id="nickName" placeholder="Nick NAME" onkeypress="_send(event)">
+			<button type="button" onclick="_send()">LogIn</button>
+		</div>
+		<div id="system"></div>
+	</div>
+
 </body>
 
 </html>
