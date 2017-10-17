@@ -97,7 +97,7 @@ socket.on('userInUse', function (data) {
 socket.on('online_users', function (data) {
 	onlineUsers.innerHTML = '';
 	for (var i = 0; i < data.length; i++) {
-		onlineUsers.innerHTML += '<p>' + data[i] + '</p>' + '<hr>';
+		onlineUsers.innerHTML += '<p>' + data[i][0] + '</p>' + '<hr>';
 	}
 });
 
@@ -135,3 +135,7 @@ Message = function (arg) {
 	}(this);
 	return this;
 };
+
+
+
+socket.emit('test');

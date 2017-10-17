@@ -17,15 +17,14 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('nickName', function (data) {
 		for (i = 0; i < users.length; i++) {
-			if (users[i] == data) {
+			if (users[i][0] == data) {
 				socket.emit('userInUse', data);
 				return;
 			}
 		}
-		users.push(data);
-		console.log("BEFORE");
+		users.push([data, socket.id]);
+		console.log(users);
 		socket.emit('_connect');
-		console.log("AFTER");
 
 		io.sockets.emit('globalMsg', {
 			user: data,
@@ -48,10 +47,10 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('Disconnect', function (data) {
 		for (i = 0; i < users.length; i++) {
-			if (users[i] == data) {
+			if (users[i][0] == data) {
 				io.sockets.emit('online_users', users);
 				io.sockets.emit('globalMsg', {
-					user: users[i],
+					user: users[i][0],
 					msg: ' Is Disconnected !'
 				})
 				users.splice(i, 1);
