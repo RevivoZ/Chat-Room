@@ -7,7 +7,6 @@ var syst = document.getElementById('system');
 var Message;
 var message_side = 'left';
 var count = -1;
-var title = 'Fraqtal-Chat';
 
 var favicon = new Favico({
 	bgColor: '#5CB85C',
