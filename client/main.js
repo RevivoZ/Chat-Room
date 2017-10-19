@@ -19,6 +19,7 @@ function _send(event) {
 	}
 	nickName = document.getElementById('nickName').value;
 	socket.emit('nickName', nickName);
+	console.log(nickName);
 
 	$('#msg').focus();
 }
