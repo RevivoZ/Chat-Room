@@ -1,25 +1,47 @@
 <html>
 
 <head>
+	<title>Fraqtal-Chat</title>
 	<link rel="stylesheet" href="client/style.css">
+	<script src="client/favjs.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="client/main.js" defer></script>
+	<link id="favicon" rel="icon" href="client/favicon.gif" />
 </head>
 
 <body>
-	<div class="online" style="position:absolute;right:0">
-		<h2>Online</h2>
-		<div id="onlineUsers">
+	<div class="online_template" id="online_template">
+		<div class="online">
+			<h2>Online</h2>
+			<div id="onlineUsers">
+			</div>
 		</div>
 	</div>
+
 	<div id="container" style="position:absolute;left:0">
 		<div class="controler">
+			<h1>Log In</h1>
 			<input type="text" id="nickName" placeholder="Nick NAME" onkeypress="_send(event)">
 			<button type="button" onclick="_send()">LogIn</button>
 		</div>
+
 		<div id="system"></div>
 	</div>
+
+
+
+	<div class="message_template">
+		<li class="message">
+			<div class="avatar"></div>
+			<div class="text_wrapper">
+				<div class="text"></div>
+			</div>
+		</li>
+	</div>
+
+
+
 
 </body>
 
